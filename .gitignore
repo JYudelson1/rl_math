@@ -1,0 +1,10 @@
+__pycache__/
+.venv
+.env
+wandb/
+checkpoint/
+.git/
+deprecated/
+
+uv.lock
+*.egg-info
