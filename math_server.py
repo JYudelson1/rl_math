@@ -19,22 +19,31 @@ class RewardModelProxy:
 
     def get_reward(self, queries, solutions):
         print(len(queries), len(solutions))
-        print(queries[0], solutions[0])
+        print(queries[0], "\n\nSolution:", solutions[0])
+        print("--------------------------------")
+        
         scores = []
         # Correct answer will be the very last piece of text inside /boxed{}
         # We can check if the solution is correct by checking if the solution is the same as the correct answer 
+        model_answers = []
         for query, solution in zip(queries, solutions):
             # Search for the correct answer in the query
-            model_answer = re.findall(r"\\boxed{(.*)}", query)
+            model_answer = re.findall(r"\\boxed{([^{}]*(?:{[^{}]*})*[^{}]*)}", query, re.DOTALL)
             if model_answer:
                 model_answer = model_answer[-1].replace(" ", "")
+                model_answers.append(model_answer)
             else:
-                model_answer = None
+                model_answers.append(None)
+                
             if model_answer == solution.replace(" ", ""):
                 scores.append(1.0)
             else:
                 scores.append(0.0)
 
+
+        for model_answer, real_answer in zip(model_answers, solutions):
+            print("Model Answer:", model_answer, "\n\nReal Answer:", real_answer)
+            print("--------------------------------")
         return scores
 
 
