@@ -28,4 +28,4 @@ extra-compile-args = ["-ftemporary-directory=/data1/joey/tmp"]
 packages = []
 
 [tool.uv.sources]
-openrlhf = { git = "https://github.com/JYudelson1/OpenRLHF-reward-hacking"}
+openrlhf = { git = "https://github.com/JYudelson1/OpenRLHF-reward-hacking", branch = "main" }

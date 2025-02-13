@@ -1,6 +1,6 @@
 import argparse
 import re
-
+import json
 import torch
 import uvicorn
 from fastapi import FastAPI, Request
@@ -31,6 +31,8 @@ class RewardModelProxy:
             model_answer = re.findall(r"\\boxed{([^{}]*(?:{[^{}]*})*[^{}]*)}", query, re.DOTALL)
             if model_answer:
                 model_answer = model_answer[-1].replace(" ", "")
+                model_answer = model_answer.replace("dfrac", "frac")
+                solution = solution.replace("dfrac", "frac")
                 model_answers.append(model_answer)
             else:
                 model_answers.append(None)
@@ -78,7 +80,7 @@ if __name__ == "__main__":
         solutions = data.get("solution")
         rewards = reward_model.get_reward(queries, solutions)
         result = {"rewards": rewards}
-        logger.info(f"Sent JSON: {result}")
+        logger.info(f"Sent JSON: {result}")                
         return JSONResponse(result)
 
     uvicorn.run(app, host=args.host, port=args.port, log_level="info")
