@@ -11,6 +11,8 @@ dependencies = [
     "datasets>=3.2.0",
     "mypy>=1.14.1",
     "xgrammar==0.1.11",
+    "trl>=0.15.1",
+    "vllm>=0.7.0",
 ]
 
 [build-system]
@@ -29,4 +31,5 @@ extra-compile-args = ["-ftemporary-directory=/data1/joey/tmp"]
 packages = []
 
 [tool.uv.sources]
-openrlhf = { git = "https://github.com/JYudelson1/OpenRLHF-reward-hacking", branch = "main" }
+openrlhf = { git = "https://github.com/JYudelson1/OpenRLHF-reward-hacking", branch = "no-mask" }
+trl = { git = "https://github.com/willccbb/trl", branch = "grpo-envs" }

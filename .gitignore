@@ -8,3 +8,5 @@ deprecated/
 
 uv.lock
 *.egg-info
+output/*
+cache/*
