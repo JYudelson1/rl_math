@@ -49,6 +49,9 @@ class MathEnv(AgentInterface):
         else:
             model_answer = None
                 
+        # print(state)
+        # print(model_answer, solution)
+                
         if model_answer == solution.replace(" ", ""):
             return 1.0
         else:

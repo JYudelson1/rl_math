@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "torch>=2.5.1",
-    "openrlhf[vllm_latest]",
+    "openrlhf[vllm]",
     "ray[train]>=2.12.0",
     "datasets>=3.2.0",
     "mypy>=1.14.1",
@@ -31,5 +31,5 @@ extra-compile-args = ["-ftemporary-directory=/data1/joey/tmp"]
 packages = []
 
 [tool.uv.sources]
-openrlhf = { git = "https://github.com/JYudelson1/OpenRLHF-reward-hacking", branch = "no-mask" }
+openrlhf = { git = "https://github.com/JYudelson1/OpenRLHF-reward-hacking", branch = "no-mask-parallel-new" }
 trl = { git = "https://github.com/willccbb/trl", branch = "grpo-envs" }

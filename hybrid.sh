@@ -13,9 +13,9 @@ uv run ray job submit --address="http://127.0.0.1:8265" \
   "env_vars": {}}' \
   -- python -m openrlhf.cli.train_ppo_ray \
   --ref_num_nodes 1 \
-  --ref_num_gpus_per_node 2 \
+  --ref_num_gpus_per_node 6 \
   --actor_num_nodes 1 \
-  --actor_num_gpus_per_node 2 \
+  --actor_num_gpus_per_node 6 \
   --vllm_num_engines 2 \
   --vllm_tensor_parallel_size 1 \
   --pretrain deepseek-ai/DeepSeek-R1-Distill-Qwen-14B \
